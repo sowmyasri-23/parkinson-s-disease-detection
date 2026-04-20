@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkinson's Detection</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-image: url("{{ url_for('static', filename='bg.jpg') }}");  /* Updated path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+    .image-section {
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+    }
+
+    .head {
+      margin-top: 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .content-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70%; /* Adjust height to fit the content nicely */
+      width: 90%;
+      position: relative;
+    }
+
+    .image-container {
+      flex: 2; /* Make image section larger */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: blink 1s infinite alternate; /* Blinking effect */
+    }
+
+    .image-container img {
+      width: 300px;
+      height: 300px;
+      cursor: pointer;
+      transition: all 0.3s ease; /* Smooth resizing */
+    }
+
+    .container {
+      flex: 1; /* Reduced the paragraph box width */
+      background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+      padding: 15px; /* Reduced padding */
+      border-radius: 10px;
+      text-align: left;
+      margin-left: 20px; /* Space between image and content */
+    }
+
+    .content p {
+      margin-bottom: 15px; /* Reduced spacing */
+      line-height: 1.5;
+    }
+
+    .content button {
+      padding: 10px 20px;
+      font-size: 1em;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .content button:hover {
+      background-color: #0056b3;
+    }
+
+    .content .link a {
+      color: #00FFFF;
+      text-decoration: none;
+    }
+
+    .content .link a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes blink {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.2); /* Slightly bigger scale */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="image-section">
+    <h1 class="head">Parkinson's Detection</h1>
+    <div class="content-wrapper">
+      <!-- Image Section -->
+      <div class="image-container">
+        <img src="{{ url_for('static', filename='park.png') }}" alt="Park Image" onclick="toggleImageSize(this)">
+      </div>
+      <!-- Text Section -->
+      <div class="container">
+        <div class="content">
+          <p>
+            Parkinson's disease is a progressive nervous system disorder that affects movement.
+            Symptoms start gradually, sometimes starting with a barely noticeable tremor in just one hand.
+            Tremors are common, but the disorder also commonly causes stiffness or slowing of movement.
+          </p>
+          <a href="./letsget.html"><button>Let's get started</button></a>
+ <!-- Using Flask route -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleImageSize(img) {
+      if (img.style.width === "400px") {
+        img.style.width = "300px";
+        img.style.height = "300px";
+      } else {
+        img.style.width = "400px";
+        img.style.height = "400px";
+      }
+    }
+  </script>
+</body>
+</html>
